@@ -11,6 +11,18 @@ RUN apt-get update && \
   rm -rf /var/lib/apt/lists/* && \
   docker-php-ext-install intl pdo_mysql zip bcmath
 
+# node
+RUN echo "deb http://deb.debian.org/debian buster main" > /etc/apt/sources.list &&\
+  curl -sL https://deb.nodesource.com/setup_18.x | bash - &&\
+  apt-get update -qq &&\
+  apt-get install -y nodejs
+
+# yarn
+RUN apt-get install apt-transport-https -y
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install yarn -y
+
 COPY ./php.ini /usr/local/etc/php/php.ini
 
 WORKDIR /data
