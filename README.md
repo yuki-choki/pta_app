@@ -77,3 +77,11 @@ PTA実行委員会の運営に関する課題を解決する。
 
     php artisan migrate
     ```
+8. npm install
+    ```bash
+    # Dockerコンテナ内
+
+    npm install
+    npm run dev
+    # or npm run watch
+    ```
