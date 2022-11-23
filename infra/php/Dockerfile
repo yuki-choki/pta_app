@@ -1,5 +1,8 @@
 FROM php:8.1-fpm-buster
 
+# Laravelでviteを使用して開発するために開放する必要がある（viteの開発サーバーのデフォルトポートに合わせる）
+EXPOSE 5173
+
 ENV COMPOSER_ALLOW_SUPERUSER=1 \
   COMPOSER_HOME=/composer
 

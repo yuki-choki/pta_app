@@ -4,6 +4,9 @@ services:
     build: ./infra/php
     volumes:
       - ./src:/data
+    # Laravelでviteを使用して開発する際に必要（viteの開発サーバーのデフォルトポートに合わせる）
+    ports:
+      - 5173:5173
   web:
     image: nginx:1.22-alpine
     ports:
